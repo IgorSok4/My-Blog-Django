@@ -1,3 +1,4 @@
+{% load blog_tags %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -11,11 +12,25 @@
     {% endblock %}
   </div>
   <div id="sidebar">
-    <h2>My blog</h2>
-    <p>This is my blog.</p>
-  </div>
-  <div>
-    <a href="http://127.0.0.1:8000/admin/">Admin page</a>
+    <h2>
+      <a href="http://127.0.0.1:8000/blog/">My blog</a>
+    </h2>
+    <h2>
+      <a href="http://127.0.0.1:8000/admin/">Admin page</a>
+    </h2>
+    <p>This is my blog. You will find there {% total_posts %} posts.</p>
+
+    <h4>Latest posts</h4>
+    {% show_latest_posts 3 %}
+    <h4>Most commented posts</h4>
+    {% get_most_commented_posts as most_commented_posts %}
+    <ul>
+      {% for post in most_commented_posts %}
+        <li>
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
   </div>
 </body>
 </html>
