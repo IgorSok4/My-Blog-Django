@@ -13,11 +13,14 @@
   </div>
   <div id="sidebar">
     <h2>
-      <a href="http://127.0.0.1:8000/blog/">My blog</a>
+      <a href="{% url "blog:post_list" %}">My blog</a>
     </h2>
     <h2>
       <a href="http://127.0.0.1:8000/admin/">Admin page</a>
     </h2>
+    <p>
+      <a href="{% url "blog:post_feed" %}">Subskrybuj kanał RSS</a>
+    </p>
     <p>This is my blog. You will find there {% total_posts %} posts.</p>
 
     <h4>Latest posts</h4>
